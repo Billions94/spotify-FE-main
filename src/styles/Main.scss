@@ -528,6 +528,7 @@ thead {
 h5.card-title {
     margin-bottom: 0px;
     margin-top: 5px;
+    text-overflow: ellipsis;
 }
 
 .card-img-top {
@@ -538,7 +539,7 @@ h5.card-title {
 }
 
 .card-img-top-1 {
-    border-radius: 10%;
+    border-radius: 5px;
 }
 
 #recently {
@@ -586,6 +587,7 @@ h5.card-title {
     object-fit: cover;
 }
 
+
 .card-text1 {
     font-size: 12px;
     font-weight: 400;
@@ -594,6 +596,7 @@ h5.card-title {
 
 .card-text1:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .good-morning-section {
@@ -617,9 +620,9 @@ h5.card-title {
     color: rgb(146, 144, 144);
 }
 
-.Recently-card h6 {
-    font-size: smaller;
-    font-weight: normal;
+.Recently-card span {
+    font-size: 10px;
+    font-weight: 400;
 }
 
 .Recently-card {
@@ -630,6 +633,7 @@ h5.card-title {
     width: 100%;
     /* height: 17vw; */
     object-fit: cover;
+    -webkit-line-clamp: 2 !important;
 }
 
 .Recently-card:hover #btn-with-style1 {
@@ -731,7 +735,7 @@ h5.card-title {
 #btn-with-style1 {
     position: absolute;
     margin-top: -80px;
-    margin-left: 115px;
+    margin-left: 45px;
     border-radius: 40px;
     width: 33px;
     height: 33px;
@@ -743,6 +747,21 @@ h5.card-title {
     transition: -webkit-transform 33ms cubic-bezier(.3,0,0,1);
     transition: transform 33ms cubic-bezier(.3,0,0,1);
     transition: transform 33ms cubic-bezier(.3,0,0,1),-webkit-transform 33ms cubic-bezier(.3,0,0,1); */
+}
+#btn-with-style2 {
+    position: relative;
+    margin-top: -180px;
+    margin-left: 165px;
+    border-radius: 40px;
+    width: 50px;
+    height: 50px;
+    opacity: 0; 
+    transition: 0.6s;
+    font-weight: bolder;
+}
+
+#btn-with-style2:hover {
+    opacity: 1;
 }
 
 #btn-with-style1:hover {
@@ -832,7 +851,7 @@ h5.card-title {
     font-size: 16px;
     position: relative;
     cursor: default;
-    /* text-decoration: none; */
+    text-decoration: none; 
 }
 
 span {
@@ -853,6 +872,7 @@ span {
     line-height: 1;
     position: relative;
     cursor: pointer;
+    text-decoration: underline;
 }
 
 .liked-hov:hover #a2 {
@@ -1000,8 +1020,6 @@ a #alex:hover {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-left: 16px;
-    padding-right: 16px;
     border-bottom: 1px solid grey;
     background-color: rgba(32, 32, 32, 0.849);
 }
@@ -1073,7 +1091,6 @@ a #alex:hover {
 
 .stickydiv {
     height: 36px;
-    margin: 0 -16px 8px;
     padding: 0 16px;
     position: sticky;
     top: 60px;

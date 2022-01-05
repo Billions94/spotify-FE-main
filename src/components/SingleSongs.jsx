@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
 
@@ -9,7 +9,7 @@ import {
   playSong,
 } from "../redux/actions/index.js";
 
-const SingleSongs = ({ song, index, img, album }) => {
+function SingleSongs({ song, index, img, album }) {
 
   const {favoriteSongs} = useSelector(state => state);
 
@@ -100,33 +100,42 @@ const SingleSongs = ({ song, index, img, album }) => {
         
       }}
     >
-      <div className="d-flex justify-content-between">
-        <div className="d-flex">
-          <div
-            className="d-flex align-items-center justify-content-center"
-            onDoubleClick={() => {
+      <div className="d-flex">
+          <div className="d-flex hash">
+              <span className="length-song">{index + 1}</span>
+          </div>
+
+          <div className="d-flex align-items-center title"
+              onDoubleClick={() => {
               dispatch(playSong(true));
-            }}
-          >
+            }}>
             {" "}
             {/*double click auto play*/}
-            <div className="d-flex my-auto m-0">
-              <span className="length-song">{index + 1}</span>
+            <div>
+              <img
+                className="artist-pic"
+                src={`https://e-cdns-images.dzcdn.net/images/cover/${song.md5_image}/264x264-000000-80-0-0.jpg`}
+              />
             </div>
-            <img
-              className="artist-pic"
-              src={`https://e-cdns-images.dzcdn.net/images/cover/${song.md5_image}/264x264-000000-80-0-0.jpg`}
-            />
-            <div className="d-flex flex-column">
-              <p className="line-breaker">{song.title_short}</p>
+            <div className="co title">
+              <a id="a1" className="line-breaker">{song.title_short}</a>
+              <br />
+              <Link id="a2" to={`/artist/${song.artist?.id}`}>
+              {song.artist.name}
+            </Link>
               {song.explicit_lyrics === true && (
                 <span className="explicit-content">E</span>
               )}
             </div>
           </div>
+
+          <div className="d-flex album">
+            <Link id="a2" to={`/album/${song.album?.id}`}>
+              {song.album?.title}
+            </Link>
         </div>
 
-        <div className="d-flex">
+        <div className="d-flex ml-auto">
           <div className="d-flex flex-row">
             {liked ? (
               <i

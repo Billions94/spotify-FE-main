@@ -7,6 +7,18 @@ export const TOGGLE_LOADER = "TOGGLE_LOADER";
 export const LIKED_ALBUMS = "LIKE_ALBUMS";
 export const PLAY_SONG = "PLAY_SONG"
 export const FAVORITE_SONGS = "FAVORITE_SONGS"
+export const ADD_TO_PLAYLIST = 'ADD_TO_PLAYLIST'
+export const REMOVE_FROM_PLAYLIST = 'REMOVE_FROM_PLAYLIST'
+
+export const addToPlaylistAction = (songs) => ({
+  type: ADD_TO_PLAYLIST,
+  payload: songs
+})
+
+export const removeFromPlayListAction = (songsIndex) => ({
+  type: REMOVE_FROM_PLAYLIST,
+  payload: songsIndex
+})
 
 
 export const getSongsAction = (artistName, category) => {

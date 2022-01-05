@@ -1,102 +1,24 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import Loader from "../components/Loader";
+import NavigationLibrary from "../components/NavigationLibrary";
 
 import { fetchResultsArray } from "../redux/actions/index";
 
 function Search() {
-  const [search, setSearch] = useState("");
 
   const { latestSearches, latestResultsSearch, loader } = useSelector(
     (state) => state
   );
-
-  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   return loader === false ? (
     <div className="music-container">
       <div className="w-100">
-        <div className="container-fluid p-0">
-          <nav
-            id="jumbo-navbar"
-            className="navbar navbar-expand-lg navbar-dark"
-          >
-            <div className="search-bar-container">
-              <form
-                className="d-flex align-items-center"
-                onSubmit={(e) => dispatch(fetchResultsArray(e, search))}
-              >
-                <i class="bi bi-search search-icon"></i>
-                <input
-                  type="text"
-                  className="search-input"
-                  placeholder="Artists , songs"
-                  onChange={(e) =>
-                    setSearch(e.target.value.toLocaleLowerCase())
-                  }
-                />
-              </form>
-            </div>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon" />
-            </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
-              <ul className="navbar-nav mr-auto" />
-              <div>
-                <div className="dropdown d-inline-block">
-                  <a
-                    className="btn nav-btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    id="dropdownMenuLink"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    style={{ color: "white" }}
-                  >
-                    <img
-                      src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
-                      width={28}
-                      height={28}
-                      className="mr-1"
-                      style={{ borderRadius: "50%" }}
-                    />
-                    <span className="d-inline-block">Diego 'Ziba' Balack</span>
-                  </a>
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenuLink"
-                  >
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </nav>
-        </div>
+        <NavigationLibrary />
       </div>
       {latestSearches.length > 0 && (
         <div class="main-content-album2">
@@ -108,26 +30,21 @@ function Search() {
                     <h4 style={{ width: "bold" }}>Recent searches</h4>
                   </div>
                   <div class="row py-1 d-flex" id="recently-played">
-                    {latestSearches.slice(0, 6).map((artist, index) => {
-                      return (
-                        <div
-                          className="col-12 col-sm-6 col-md-4 col-lg-2"
-                          onClick={() => {
-                            navigate(`/artist/${artist.id}`);
-                          }}
-                        >
-                          <div class="card" style={{ marginBottom: "25px" }}>
-                            <img
-                              src={artist.picture}
-                              class="card-img-top img-fluid img-rounded"
-                            />
-                            <div class="card-body">
-                              <h5 class="card-title dotted">{artist.name}</h5>
-                            </div>
-                          </div>
+                    {latestSearches.slice(0, 6).map((artist, index) => (
+                        <div key={index} className="Recently-card col-lg-2 mb-3 ml-3 p-2 "
+                        onClick={()=> navigate(`/album/${artist.id}`)}>
+                          <img src={artist.picture} className="card-img-top" />
+                        <div className="card-body mt-2">
+                            <h6 className="card-title text-white"></h6>
+                          <span className="card-text1 text-white">{artist.name}</span>
+                          <button id="btn-with-style1"
+                            type="button"
+                            className="btn btn-success">
+                            ▶
+                          </button>
                         </div>
-                      );
-                    })}
+                      </div>
+                      ))}
                   </div>
                 </div>
               </section>
@@ -147,28 +64,27 @@ function Search() {
                     </h4>
                   </div>
                   <div class="row py-1 d-flex" id="recently-played">
-                    {latestResultsSearch.slice(0, 12).map((song, index) => {
-                      return (
-                        <div
-                          className="col-12 col-sm-6 col-md-4 col-lg-2"
-                          onClick={() => {
-                            navigate(`/album/${song.album.id}`);
-                          }}
-                        >
-                          <div class="card" style={{ marginBottom: "25px" }}>
-                            <img
-                              src={song.album.cover_medium}
-                              class="card-img-top img-fluid"
-                            />
-                            <div class="card-body">
-                              <h5 class="card-title dotted">
-                                {song.album.title}
-                              </h5>
-                            </div>
-                          </div>
+                    {latestResultsSearch.slice(0, 12).map((song, index) => (
+                        <div key={index} className="Recently-card col-lg-2 mb-3 ml-3 p-2 ">
+                        <Link to={`/album/${song.album.id}`}>
+                          <img src={song.album.cover_medium} className="card-img-top" />
+                        </Link>
+                        <div className="card-body mt-2">
+                          <Link to={`/album/${song.album.id}`}>
+                            <h6 className="card-title text-white">{song.album.title}</h6>
+                          </Link>
+                          <Link to={`/artist/${song.artist.id}`}
+                          className="card-text1">
+                          <span className="card-text1 text-white">{song.artist.name}</span>
+                          </Link>
+                          <button id="btn-with-style1"
+                            type="button"
+                            className="btn btn-success">
+                            ▶
+                          </button>
                         </div>
-                      );
-                    })}
+                      </div>
+                      ))}
                   </div>
                 </div>
               </section>

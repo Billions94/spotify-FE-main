@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import mainReducer from "../reducers";
 import thunk from "redux-thunk";
 
@@ -39,7 +39,8 @@ export const initialState = {
   },
   songImage: 'https://e-cdns-images.dzcdn.net/images/cover/f1c31620f0e108b707ce1a1af0954158/56x56-000000-80-0-0.jpg',
   songPlaying: false,
-  favoriteSongs: []
+  favoriteSongs: [],
+  playlist: []
 };
 const configureStore = createStore(
   mainReducer,

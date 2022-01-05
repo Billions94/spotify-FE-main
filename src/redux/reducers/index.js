@@ -8,7 +8,8 @@ import {
   LIKED_ALBUMS,
   PLAY_SONG,
   FAVORITE_SONGS
-} from "../actions/index.js";
+} from "../actions/";
+import { ADD_TO_PLAYLIST, REMOVE_FROM_PLAYLIST } from "../actions/"
 
 const mainReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -61,6 +62,17 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         favoriteSongs: payload,
       }
+      case ADD_TO_PLAYLIST:
+        return {
+            ...state, 
+            lists: payload 
+        }
+    case REMOVE_FROM_PLAYLIST: {
+        return {
+            ...state,
+            list: state.list.filter((el, i) => i !== payload)
+        }
+    }  
     default:
       return state;
   }

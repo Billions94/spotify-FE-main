@@ -58,14 +58,12 @@ const Home = () => {
                             class="img-fluid h-100 w-100"
                           />
                         </div>
-                        <div
-                          class="
+                        <div class="
                                 col-md-8
                                 d-flex
                                 justify-content-center
                                 align-items-center
-                              "
-                        >
+                              ">
                           <div class="card-body p-0 pl-1">
                             <p class="card-text">
                               <span>{song.album.title}</span>
@@ -102,7 +100,8 @@ const Home = () => {
                           <Link to={`/album/${song.album.id}`}>
                             <h6 className="card-title text-white">{song.album.title}</h6>
                           </Link>
-                          <Link to={`/artist/${song.artist.id}`}>
+                          <Link to={`/artist/${song.artist.id}`}
+                          className="card-text1">
                           <span className="card-text1 text-white">{song.artist.name}</span>
                           </Link>
                           <button id="btn-with-style1"

@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { getLikedAlbums } from "../redux/actions/index";
 
+
 function Album() {
   const params = useParams().albumId;
   const { likedAlbums } = useSelector((state) => state)
@@ -180,7 +181,7 @@ function Album() {
               </div>
             </div>
           </div>
-          <div className="padding-content">
+          {/* <div className="padding-content">
             <div className="row d-flex">
               <div className="col-12 col-md-12 col-lg-12 col-xl-12">
                 <div className="col-12 d-flex flex-column mb-0">
@@ -203,7 +204,54 @@ function Album() {
                 img={albumInfo.cover_small}
               />
             );
-          })}
+          })} */}
+                    <div className="col-12">
+          <div className="song-content">
+            <div className="table-header stickydiv mb-4 sticky-top">
+              <div className="d-flex text-light hash">#</div>
+              <div className="d-flex text-light title">
+                <div className="d-flex">
+                  <span className="text-light">TITLE</span>
+                </div>
+              </div>
+              <div className="d-flex album ml-4">
+                <div className="d-flex">
+                  <span className="text-light">ALBUM</span>
+                </div>
+              </div>
+              <div className="d-flex date-added">
+                <div className="d-flex">
+                  <span className="text-light">DATE ADDED</span>
+                </div>
+              </div>
+              <div className="d-flex duration">
+                <div className="d-flex">
+                  <img
+                    src="./images/icons8-clock-32.png"
+                    width={20}
+                    height={20}
+                    alt
+                  />
+                </div>
+              </div>
+            </div>
+            {/*-------------------------------------------table 1-------------------------------------------*/}
+              <>
+              { albumSongs.map((song, i) => (
+                  <Songs
+                  index={i}
+                  song={song}
+                  img={
+                    "https://e-cdns-images.dzcdn.net/images/cover/" +
+                    song.md5_image +
+                    "/250x250-000000-80-0-0.jpg"
+                  }
+                  liked={true}
+                />
+              ))}
+                </>
+          </div>
+        </div>
         </div>
       </section>
     </div>
