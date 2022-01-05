@@ -12,9 +12,7 @@ const Home = () => {
   const [recentSongs, setRecentSongs] = useState([]);
 
   const getSongs = (artist) => {
-    fetch(
-      "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + artist
-    )
+    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${artist}`)
       .then((response) => response.json())
       .then((data) => {
         setSongs(data.data);
@@ -22,9 +20,7 @@ const Home = () => {
   };
 
   const getRecentSongs = (artist) => {
-    fetch(
-      "https://striveschool-api.herokuapp.com/api/deezer/search?q=" + artist
-    )
+    fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${artist}`)
       .then((response) => response.json())
       .then((data) => {
         setRecentSongs(data.data);
@@ -44,12 +40,8 @@ const Home = () => {
               <h2>Good morning</h2>
               <div class="row py-2" id="good-mor">
                 {songs.slice(0, 6).map((song, index) => (
-                  <div
-                    className="col-12 col-sm-6 col-md-4 col-lg-4"
-                    onClick={() => {
-                      navigate(`/artist/${song.artist.id}`);
-                    }}
-                  >
+                  <div className="col-12 col-sm-6 col-md-4 col-lg-4"
+                    onClick={() => navigate(`/artist/${song.artist.id}`)}>
                     <div class="card-top p-0 mb-2">
                       <div class="row no-gutters">
                         <div class="col-md-4">
@@ -91,24 +83,23 @@ const Home = () => {
                     </p>
                   </div>
                   <div class="row py-1 d-flex" id="recently-played">
-                    {recentSongs.slice(0, 12).map((song, index) => (
+                    { recentSongs.slice(0, 12).map((song, index) => (
                       <div className="Recently-card col-lg-2 mb-3 ml-3 p-2 ">
-                        <Link to={`/album/${song.album.id}`}>
-                          <img src={song.album.cover_medium} className="card-img-top" />
-                        </Link>
-                        <div className="card-body mt-2">
                           <Link to={`/album/${song.album.id}`}>
-                            <h6 className="card-title text-white">{song.album.title}</h6>
+                            <img src={song.album.cover_medium} className="card-img-top" />
                           </Link>
-                          <Link to={`/artist/${song.artist.id}`}
-                          className="card-text1">
-                          <span className="card-text1 text-white">{song.artist.name}</span>
-                          </Link>
-                          <button id="btn-with-style1"
-                            type="button"
-                            className="btn btn-success">
-                            ▶
-                          </button>
+                        <div className="card-body mt-2">
+                            <Link to={`/album/${song.album.id}`}>
+                              <h6 className="card-title text-white">{song.album.title}</h6>
+                            </Link>
+                            <Link to={`/artist/${song.artist.id}`}
+                              className="card-text1">
+                              <span className="card-text1 text-white">{song.artist.name}</span>
+                            </Link>
+                            <button id="btn-with-style1" type="button"
+                              className="btn btn-success">
+                              ▶
+                            </button>
                         </div>
                       </div>
                       ))}

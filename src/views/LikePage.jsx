@@ -1,10 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import Songs from "../components/Songs";
 import { useParams } from "react-router";
-import PlaceHolder  from "../components/PlaceHolder";
-
-import Song from "../svg/Song.svg"
 import NavigationLibrary from "../components/NavigationLibrary";
 import SingleSongs from "../components/SingleSongs";
 
@@ -15,30 +11,52 @@ const LikePage = () => {
   const [image, setImage] = useState(null);
   const [name, setName] = useState(null);
 
-  const fetchLikedSongs = () => {
-    const url = "https://spotify-be-app.herokuapp.com/likes";
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setLikedSongs(data);
-       
-      });
-  };
-  const fetchPlaylistSongs = (playlistId) => {
-    const url = "https://spotify-be-app.herokuapp.com/playlist/" + playlistId;
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-      
-        setLikedSongs(data.songs);
-        setName(data.name);
-        if (data.songs[0]) {
-          setImage(data.songs[0].md5_image);
-        } else {
-          setImage(null);
+  const fetchLikedSongs = async () => {
+    try {
+      const response = await fetch("https://spotify-be-app.herokuapp.com/likes")
+        if(response.ok) {
+          const data = response.json()
+          setLikedSongs(data)
         }
-      });
-  };
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+  // const fetchPlaylistSongs = (playlistId) => {
+  //   const url = `https://spotify-be-app.herokuapp.com/playlist/${playlistId}`;
+  //   fetch(url)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+      
+  //       setLikedSongs(data.songs);
+  //       setName(data.name);
+  //       if (data.songs[0]) {
+  //         setImage(data.songs[0].md5_image);
+  //       } else {
+  //         setImage(null);
+  //       }
+  //     });
+  // };
+
+  const fetchPlaylistSongs = async (playlistId) => {
+    try {
+      const response = await fetch(`https://spotify-be-app.herokuapp.com/playlist/${playlistId}`)
+        if(response.ok) {
+          const data = await response.json()
+          setLikedSongs(data.songs);
+          setName(data.name);
+          if (data.songs[0]) {
+            setImage(data.songs[0].md5_image);
+          } else {
+          setImage(null);
+         }
+        }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     if (params?.playlistId) {
       fetchPlaylistSongs(params.playlistId);

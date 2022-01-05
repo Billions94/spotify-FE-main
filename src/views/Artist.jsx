@@ -16,10 +16,7 @@ const Artist = () => {
 
   const fetchArtistInfo = async (params) => {
     try {
-      const response = await fetch(
-        `https://striveschool-api.herokuapp.com/api/deezer/artist/${params}`
-      );
-
+      const response = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${params}`)
       if (response.ok) {
         const data = await response.json();
         console.log(data);
@@ -35,10 +32,7 @@ const Artist = () => {
 
   const topFiveSongs = async () => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_BE_URL}/topFive/${params.artistId}`
-      );
-
+      const response = await fetch(`${process.env.REACT_APP_BE_URL}/topFive/${params.artistId}`)
       if (response.ok) {
         const data = await response.json();
         setArtistTopTracks(data);
@@ -52,10 +46,7 @@ const Artist = () => {
 
   const topFiveAlbums = async (artist) => {
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_BE_URL}/topFive/album/${artist}`
-      );
-
+      const response = await fetch(`${process.env.REACT_APP_BE_URL}/topFive/album/${artist}`)
       if (response.ok) {
         const data = await response.json();
         setArtistTopFiveAlbums(data.slice(0, 5));
@@ -66,6 +57,8 @@ const Artist = () => {
       console.log(error);
     }
   };
+
+  console.log('--------------------------> artist info', artistInfo)
 
   useEffect(() => {
     fetchArtistInfo(params.artistId);
@@ -202,7 +195,7 @@ const Artist = () => {
               </div>
               <div className="row d-flex">
                 <div className="col-12 col-md-12 col-lg-12 col-xl-7">
-                  {artistTopTracks.map((song, index) => {
+                  {artistTopTracks?.map((song, index) => {
                     return (
                       <Songs
                         song={song}
@@ -292,7 +285,7 @@ const Artist = () => {
                     <h4 style={{ width: "bold" }}>Albums</h4>
                   </div>
                   <div className="row py-1 d-flex">
-                    {artistTopFiveAlbums.map((song) => {
+                    {artistTopFiveAlbums?.map((song) => {
                       return <AlbumCard song={song} />;
                     })}
                   </div>

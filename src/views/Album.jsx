@@ -138,10 +138,20 @@ function Album() {
         <div className="main-content-album">
           <div>
             <div className="buttons-row">
-              <div className="play-button">
-                <div className="play">
-                  <i className="bi bi-play-fill" />
+            <div className="padding-content">
+              {albumSongs.length > 0 && (
+                <div className="buttons-row">
+                <div className="sticky-top">
+                  {/*-----------button with js---------*/}
+                  <button id="btn-b4-follow"
+                    type="button"
+                    className="btn btn-success"
+                    onclick="togglePlay()">
+                    <div className="follow button" />
+                  </button>
                 </div>
+                </div>
+              )}
               </div>
               <svg
                 className="like-big"

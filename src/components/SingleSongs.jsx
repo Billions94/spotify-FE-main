@@ -12,30 +12,22 @@ import {
 function SingleSongs({ song, index, img, album }) {
 
   const {favoriteSongs} = useSelector(state => state);
-
-
   const [liked, setLiked] = useState(false);
 
-
-  //data[index].id
   const fetchLikes = (likedSong, method, id) => {
     likedSong.album = album;
     delete likedSong?.album?.album;
     delete likedSong.album?.tracks;
     delete likedSong.album?.artist;
 
-    // console.log(JSON.stringify(likedSong));
-
     let url = "https://spotify-be-app.herokuapp.com/likes/";
-
-    let urlDelete = "https://spotify-be-app.herokuapp.com/likes/" + id;
+    let urlDelete = `https://spotify-be-app.herokuapp.com/likes/${id}`;
 
     if (!method) {
       fetch(url, {
         method: method || "POST",
         headers: {
           "Content-Type": "application/json",
-          // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify(likedSong),
       })
@@ -56,8 +48,6 @@ function SingleSongs({ song, index, img, album }) {
     var hrs = ~~(duration / 3600);
     var mins = ~~((duration % 3600) / 60);
     var secs = ~~duration % 60;
-
-    // Output like "1:01" or "4:03:59" or "123:03:59"
     var ret = "";
 
     if (hrs > 0) {
@@ -75,18 +65,14 @@ function SingleSongs({ song, index, img, album }) {
     
   }, [liked]);
 
-  useEffect(() => {
-    // console.log(favoriteSongs);
-    
+  useEffect(() => { 
     if (favoriteSongs.length > 0) {
-      // console.log( 'dasdasd');
-
-      // setLiked(likedSongs.some((likedSong) => likedSong.id === song.id));
       if(favoriteSongs.find((s => s.id === song.id))){
         setLiked(true);
-      };
-    }
-    
+      } else {
+        setLiked(false)
+      }
+    } 
   }, [favoriteSongs]);
 
 

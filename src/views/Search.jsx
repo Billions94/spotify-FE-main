@@ -1,13 +1,10 @@
 import React from "react";
-import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
 import Loader from "../components/Loader";
 import NavigationLibrary from "../components/NavigationLibrary";
 
-import { fetchResultsArray } from "../redux/actions/index";
-
-function Search() {
+const Search = () => {
 
   const { latestSearches, latestResultsSearch, loader } = useSelector(
     (state) => state
@@ -93,10 +90,8 @@ function Search() {
         </div>
       )}
       {latestResultsSearch.length < 1 && (
-        <div
-          class="main-content-album2 d-flex align-items-center justify-content-center"
-          style={{ height: "calc(100% - 100px)" }}
-        >
+        <div class="main-content-album2 d-flex align-items-center justify-content-center"
+          style={{ height: "calc(100% - 100px)" }}>
           <div>
             <div class="padding-content">
               <section id="second-section">

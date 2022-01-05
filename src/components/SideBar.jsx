@@ -20,15 +20,17 @@ const SideBar = ({ children }) => {
     });
   };
 
-  const fetchPLaylist = () => {
-    const url = "https://spotify-be-app.herokuapp.com/playlist";
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        setPlaylist(data);
-      });
-  };
+  const fetchPLaylist = async () => {
+    try {
+      const response = await fetch("https://spotify-be-app.herokuapp.com/playlist")
+        if(response.ok) {
+          const data = await response.json()
+          setPlaylist(data)
+        }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   const deletePlaylist = (id) => {
     const newPlaylist = { name: "playlist" };

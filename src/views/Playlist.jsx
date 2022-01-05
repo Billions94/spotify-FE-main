@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams } from "react-router";
 
 const Playlist = (props) => {
@@ -11,30 +11,24 @@ const Playlist = (props) => {
       <section id="navbar">
         <div className="container-fluid">
           <nav className="navbar navbar-expand-lg navbar-dark bg-svideo-dark">
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
+            <div id="navbarSupportedContent" className="collapse navbar-collapse">
               <ul className="navbar-nav mr-auto" />
               <div>
                 <div className="dropdown d-inline-block">
-                  <a
-                    className="btn nav-btn dropdown-toggle"
+                  <a className="btn nav-btn dropdown-toggle"
                     href="#"
                     role="button"
                     id="dropdownMenuLink"
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
-                    style={{ color: "white" }}
-                  >
+                    style={{ color: "white" }}>
                     <img
                       src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
                       width={28}
                       height={28}
                       className="mr-1"
-                      style={{ borderRadius: "50%" }}
-                    />
+                      style={{ borderRadius: "50%" }}/>
                     <span className="d-inline-block">Diego 'Ziba' Balack</span>
                   </a>
                   {/* <div
@@ -58,18 +52,15 @@ const Playlist = (props) => {
           <div className="jumbotron jumbotron-fluid">
             <div
               className="d-flex align-items-end"
-              style={{ margin: 35, marginTop: 146 }}
-            >
+              style={{ margin: 35, marginTop: 146 }}>
               {
-                <img
-                  className="likedBox  img-fluid mr-3"
-                  src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png"
-                />
+                <img className="likedBox  img-fluid mr-3"
+                  src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png"/>
               }
               <span className="titlesLikePage">
                 <span>PLAYLIST</span>
                 <h4 className="headerLike">Playlist {params.playlistId}</h4>
-                <span> Diego - 4 songs</span>
+                <span> Alexander - 4 songs</span>
               </span>
             </div>
           </div>
@@ -84,10 +75,8 @@ const Playlist = (props) => {
                   </div>
                 </div>
 
-                <div
-                  className="dropdown-menu"
-                  aria-labelledby="dropdownMenuLink"
-                >
+                <div className="dropdown-menu"
+                  aria-labelledby="dropdownMenuLink">
                   <a className="dropdown-item" href="#">
                     Action
                   </a>
