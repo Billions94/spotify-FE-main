@@ -32,13 +32,9 @@ function AlbumTopInfo({ albumInfo, artistInfo, length }) {
           width: 232,
           margin: 30,
           filter: "drop-shadow(30px 10px 4px #0000001f)",
-          minWidth: "232px",
-        }}
-      />
-      <div
-        className="d-flex flex-column justify-content-end"
-        style={{ marginBottom: 30 }}
-      >
+          minWidth: "232px"}}/>
+      <div className="d-flex flex-column justify-content-end"
+        style={{ marginBottom: 30 }}>
         <div>
           <h2 style={{ fontSize: 12, color: "white", fontWeight: "bold" }}>
             ALBUM
@@ -57,20 +53,15 @@ function AlbumTopInfo({ albumInfo, artistInfo, length }) {
               width: 24,
               borderRadius: "50%",
               objectFit: "cover",
-              marginRight: 5,
-            }}
-          />
-          <h2
-            style={{
+              marginRight: 5}}/>
+          <h2 style={{
               fontSize: 14,
               color: "white",
               marginBottom: 0,
               fontWeight: "bold",
-            }}
-            onClick={() => {
-              navigate(`/artist/${artistInfo.id}`);
-            }}
-          >
+              cursor: "pointer"}}
+              onClick={() => {
+              navigate(`/artist/${artistInfo.id}`)}}>
             {artistInfo.name}
           </h2>
           <span className="text-muted" style={{ fontSize: 14, marginLeft: 5 }}>
