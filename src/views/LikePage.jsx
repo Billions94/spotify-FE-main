@@ -1,15 +1,16 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router";
-import NavigationLibrary from "../components/NavigationLibrary";
-import SingleSongs from "../components/SingleSongs";
+import React from "react"
+import { useEffect, useState } from "react"
+import { useParams } from "react-router"
+import NavigationLibrary from "../components/NavigationLibrary"
+import SingleSongs from "../components/SingleSongs"
 
 const LikePage = () => {
-  const params = useParams();
+  const params = useParams()
 
-  const [likedSongs, setLikedSongs] = useState([]);
-  const [image, setImage] = useState(null);
-  const [name, setName] = useState(null);
+  const [likedSongs, setLikedSongs] = useState([])
+  const [image, setImage] = useState(null)
+  const [name, setName] = useState(null)
+  
 
   const fetchLikedSongs = async () => {
     try {
@@ -44,10 +45,10 @@ const LikePage = () => {
       const response = await fetch(`https://spotify-be-app.herokuapp.com/playlist/${playlistId}`)
         if(response.ok) {
           const data = await response.json()
-          setLikedSongs(data.songs);
-          setName(data.name);
+          setLikedSongs(data.songs)
+          setName(data.name)
           if (data.songs[0]) {
-            setImage(data.songs[0].md5_image);
+            setImage(data.songs[0].md5_image)
           } else {
           setImage(null);
          }
@@ -59,11 +60,11 @@ const LikePage = () => {
 
   useEffect(() => {
     if (params?.playlistId) {
-      fetchPlaylistSongs(params.playlistId);
+      fetchPlaylistSongs(params.playlistId)
     } else {
-      fetchLikedSongs();
+      fetchLikedSongs()
     }
-  }, [params.playlistId]);
+  }, [params.playlistId])
   return (
     <div className="like-container">
       <section id="navbar">

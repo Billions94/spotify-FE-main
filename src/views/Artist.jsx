@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import Loader from "../components/Loader";
 import Songs from "../components/Songs";
 import AlbumCard from "../components/AlbumCard";
+import SingleSongs from "../components/SingleSongs";
 
 const Artist = () => {
   const [artistInfo, setArtistInfo] = useState(null);
@@ -87,34 +88,28 @@ const Artist = () => {
               data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent"
               aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
+              aria-label="Toggle navigation">
               <span className="navbar-toggler-icon" />
             </button>
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
+            <div className="collapse navbar-collapse"
+              id="navbarSupportedContent">
               <ul className="navbar-nav mr-auto" />
               <div>
                 <div className="dropdown d-inline-block">
-                  <a
-                    className="btn nav-btn dropdown-toggle"
+                  <a className="btn nav-btn dropdown-toggle"
                     href="#"
                     role="button"
                     id="dropdownMenuLink"
                     data-toggle="dropdown"
                     aria-haspopup="true"
                     aria-expanded="false"
-                    style={{ color: "white" }}
-                  >
+                    style={{ color: "white" }}>
                     <img
                       src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
                       width={28}
                       height={28}
                       className="mr-1"
-                      style={{ borderRadius: "50%" }}
-                    />
+                      style={{ borderRadius: "50%" }}/>
                     <span className="d-inline-block">Diego 'Ziba' Balack</span>
                   </a>
                   {/* <div
@@ -197,7 +192,7 @@ const Artist = () => {
                 <div className="col-12 col-md-12 col-lg-12 col-xl-7">
                   {artistTopTracks?.map((song, index) => {
                     return (
-                      <Songs
+                      <SingleSongs
                         song={song}
                         index={index}
                         album={"A"}
@@ -227,16 +222,14 @@ const Artist = () => {
                           {artistInfo.name}
                         </a>
                       </div>
-                      <div
-                        style={{
+                      <div style={{
                           fontSize: 14,
                           fontWeight: 400,
                           letterSpacing: "normal",
                           lineHeight: 16,
                           textTransform: "none",
                           marginTop: 5,
-                        }}
-                      ></div>
+                        }}></div>
                     </div>
                   </div>
                 </div>
