@@ -125,17 +125,17 @@ function SingleSongs({ song, index, img, album }) {
             <div className="co title">
               <a id="a1" className="line-breaker">{song.title_short}</a>
               <br />
-              <Link id="a2" to={`/artist/${song.artist?.id}`}>
               {song.explicit_lyrics === true && (
-                <span className="mr-1">🅴</span>
+                <span className="explicit text-muted">🅴</span>
               )}
+              <Link id="a2" className="text-muted" to={`/artist/${song.artist?.id}`}>
               {song.artist.name}
             </Link>
             </div>
           </div>
 
           <div className="d-flex album">
-            <Link id="a2" to={`/album/${song.album?.id}`}>
+            <Link id="a2" className="text-muted" to={`/album/${song.album?.id}`}>
               {song.album?.title}
             </Link>
         </div>

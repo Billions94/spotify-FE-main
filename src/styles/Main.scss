@@ -589,7 +589,7 @@ h5.card-title {
 
 
 .card-text1 {
-    font-size: 12px;
+    font-size: 12.5px !important;
     font-weight: 400;
     line-height: 20px;
 }
@@ -865,14 +865,23 @@ span {
     margin-top: 9px;
 }
 
+.explicit {
+    margin-left: 9px;
+}
+
 #a2 {
-    color: grey;
+    // color: grey;
     margin-left: 10px;
     font-size: 14px;
     line-height: 1;
     position: relative;
     cursor: pointer;
     text-decoration: underline;
+}
+
+#a2:hover {
+    cursor: pointer;
+    text-decoration: underline !important;
 }
 
 .liked-hov:hover #a2 {
@@ -1058,6 +1067,7 @@ a #alex:hover {
     cursor: pointer;
     text-overflow: ellipsis !important;
 }
+
 
 .date-added {
     flex-basis: 198px;
