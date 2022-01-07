@@ -1,8 +1,8 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react"
+import { useNavigate } from "react-router-dom"
 
 const NoLikedSongs = ({svg , title , description , button, height}) => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
   return (
     <div className="no-like d-flex align-items-center justify-content-center text-center" style={{height: height}}>
       <div className="d-flex flex-column align-items-center justify-content-center">
@@ -16,7 +16,7 @@ const NoLikedSongs = ({svg , title , description , button, height}) => {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default NoLikedSongs;
+export default NoLikedSongs

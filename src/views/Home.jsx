@@ -6,30 +6,30 @@ import GeneralCard from "../components/GeneralCard"
 import { Col } from "react-bootstrap"
 
 const Home = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [songs, setSongs] = useState([]);
-  const [recentSongs, setRecentSongs] = useState([]);
+  const [songs, setSongs] = useState([])
+  const [recentSongs, setRecentSongs] = useState([])
 
   const getSongs = (artist) => {
     fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${artist}`)
       .then((response) => response.json())
       .then((data) => {
-        setSongs(data.data);
-      });
-  };
+        setSongs(data.data)
+      })
+  }
 
   const getRecentSongs = (artist) => {
     fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${artist}`)
       .then((response) => response.json())
       .then((data) => {
-        setRecentSongs(data.data);
-      });
-  };
+        setRecentSongs(data.data)
+      })
+  }
   useEffect(() => {
-    getSongs("eminem");
-    getRecentSongs("metallica");
-  }, []);
+    getSongs("eminem")
+    getRecentSongs("metallica")
+  }, [])
 
   return songs.length > 0 && recentSongs.length > 0 ? (
     <div className="music-container">
@@ -113,7 +113,7 @@ const Home = () => {
     </div>
   ) : (
     <Loader />
-  );
-};
+  )
+}
 
-export default Home;
+export default Home

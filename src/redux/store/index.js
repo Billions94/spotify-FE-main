@@ -1,9 +1,11 @@
-import { createStore, applyMiddleware, compose } from "redux";
-import mainReducer from "../reducers";
-import thunk from "redux-thunk";
+import { createStore, applyMiddleware, compose } from "redux"
+import mainReducer from "../reducers"
+import thunk from "redux-thunk"
+import { persistStore, persistReducer } from "redux-persist"
+import storage from "redux-persist/lib/storage"
 
 const aComposeThatAlwaysWorks =
-  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export const initialState = {
   songs: {
@@ -41,11 +43,20 @@ export const initialState = {
   songPlaying: false,
   favoriteSongs: [],
   playlist: []
-};
+}
+
+const persistConfig = {
+  key: "root",
+  storage,
+}
+
+const persistedReducer = persistReducer(persistConfig, mainReducer)
+
 const configureStore = createStore(
-  mainReducer,
+  persistedReducer,
   initialState,
   aComposeThatAlwaysWorks(applyMiddleware(thunk))
-);
+)
 
-export default configureStore;
+export default configureStore
+export const persistor = persistStore(configureStore)

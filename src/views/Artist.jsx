@@ -1,73 +1,72 @@
-import React, { useEffect, useState } from "react";
-
-import { useParams } from "react-router";
-import Loader from "../components/Loader";
-import Songs from "../components/Songs";
-import AlbumCard from "../components/AlbumCard";
-import SingleSongs from "../components/SingleSongs";
+import React, { useEffect, useState } from "react"
+import { useParams } from "react-router"
+import Loader from "../components/Loader"
+import Songs from "../components/Songs"
+import AlbumCard from "../components/AlbumCard"
+import SingleSongs from "../components/SingleSongs"
 
 const Artist = () => {
-  const [artistInfo, setArtistInfo] = useState(null);
+  const [artistInfo, setArtistInfo] = useState(null)
 
-  const [artistTopTracks, setArtistTopTracks] = useState([]);
+  const [artistTopTracks, setArtistTopTracks] = useState([])
 
-  const [artistTopFiveAlbums, setArtistTopFiveAlbums] = useState([]);
+  const [artistTopFiveAlbums, setArtistTopFiveAlbums] = useState([])
 
-  const params = useParams();
+  const params = useParams()
 
   const fetchArtistInfo = async (params) => {
     try {
       const response = await fetch(`https://striveschool-api.herokuapp.com/api/deezer/artist/${params}`)
       if (response.ok) {
-        const data = await response.json();
-        console.log(data);
-        setArtistInfo(data);
-        await topFiveSongs();
+        const data = await response.json()
+        console.log(data)
+        setArtistInfo(data)
+        await topFiveSongs()
       } else {
-        console.log("error fetching artist");
+        console.log("error fetching artist")
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   const topFiveSongs = async () => {
     try {
       const response = await fetch(`${process.env.REACT_APP_BE_URL}/topFive/${params.artistId}`)
       if (response.ok) {
-        const data = await response.json();
-        setArtistTopTracks(data);
+        const data = await response.json()
+        setArtistTopTracks(data)
       } else {
-        console.log("error fetching top five songs");
+        console.log("error fetching top five songs")
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   const topFiveAlbums = async (artist) => {
     try {
       const response = await fetch(`${process.env.REACT_APP_BE_URL}/topFive/album/${artist}`)
       if (response.ok) {
-        const data = await response.json();
-        setArtistTopFiveAlbums(data.slice(0, 5));
+        const data = await response.json()
+        setArtistTopFiveAlbums(data.slice(0, 5))
       } else {
-        console.log("error fetching top five songs");
+        console.log("error fetching top five songs")
       }
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   console.log('--------------------------> artist info', artistInfo)
 
   useEffect(() => {
-    fetchArtistInfo(params.artistId);
-  }, []);
+    fetchArtistInfo(params.artistId)
+  }, [])
 
   useEffect(() => {
-    topFiveAlbums(artistInfo?.name);
-  }, [artistInfo]);
+    topFiveAlbums(artistInfo?.name)
+  }, [artistInfo])
 
   return artistInfo ? (
     <div className="music-container">
@@ -198,7 +197,7 @@ const Artist = () => {
                         album={"A"}
                         img={`https://e-cdns-images.dzcdn.net/images/cover/${song.md5_image}/264x264-000000-80-0-0.jpg`}
                       />
-                    );
+                    )
                   })}
                 </div>
                 <div className="d-none d-md-none d-lg-none d-xl-block offset-1 col-4 ">
@@ -279,7 +278,7 @@ const Artist = () => {
                   </div>
                   <div className="row py-1 d-flex">
                     {artistTopFiveAlbums?.map((song) => {
-                      return <AlbumCard song={song} />;
+                      return <AlbumCard song={song} />
                     })}
                   </div>
                 </div>
@@ -291,7 +290,7 @@ const Artist = () => {
     </div>
   ) : (
     <Loader />
-  );
-};
+  )
+}
 
-export default Artist;
+export default Artist

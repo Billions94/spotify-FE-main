@@ -1,10 +1,10 @@
-import React from "react";
-import { useState } from "react";
-import { useParams } from "react-router";
+import React from "react"
+import { useState } from "react"
+import { useParams } from "react-router"
 
 const Playlist = (props) => {
-  const [image, setImage] = useState(null);
-  const params = useParams();
+  const [image, setImage] = useState(null)
+  const params = useParams()
 
   return (
     <div className="like-container">
@@ -173,7 +173,7 @@ const Playlist = (props) => {
         </div>
       </section>
     </div>
-  );
-};
+  )
+}
 
-export default Playlist;
+export default Playlist

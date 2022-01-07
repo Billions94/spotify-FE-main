@@ -1,24 +1,24 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React from "react"
+import { useEffect, useState } from "react"
 import Button from 'react-bootstrap/Button'
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom"
 
 const SideBar = ({ children }) => {
-  const [playlist, setPlaylist] = useState([]);
+  const [playlist, setPlaylist] = useState([])
 
   const creatPlaylist = () => {
-    const newPlaylist = { name: "playlist" };
-    const url = "https://spotify-be-app.herokuapp.com/playlist";
+    const newPlaylist = { name: "playlist" }
+    const url = "https://spotify-be-app.herokuapp.com/playlist"
     fetch(url, {
       body: JSON.stringify(newPlaylist),
       method: "POST",
       headers: { "Content-Type": "application/json" },
     }).then((data) => {
-      // console.log(data);
-      fetchPLaylist();
-      console.log(playlist.length);
-    });
-  };
+      // console.log(data)
+      fetchPLaylist()
+      console.log(playlist.length)
+    })
+  }
 
   const fetchPLaylist = async () => {
     try {
@@ -33,24 +33,24 @@ const SideBar = ({ children }) => {
   }
 
   const deletePlaylist = (id) => {
-    const newPlaylist = { name: "playlist" };
-    const url = "https://spotify-be-app.herokuapp.com/playlist/" + id;
+    const newPlaylist = { name: "playlist" }
+    const url = "https://spotify-be-app.herokuapp.com/playlist/" + id
     fetch(url, {
       method: "DELETE",
     }).then((data) => {
       
-      fetchPLaylist();
-      console.log(playlist.length);
-    });
+      fetchPLaylist()
+      console.log(playlist.length)
+    })
   }
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
+  const { pathname } = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
-    fetchPLaylist();
-  }, []);
+    fetchPLaylist()
+  }, [])
 
-  useEffect(() => {}, [playlist]);
+  useEffect(() => {}, [playlist])
   return (
     <div className="aside-bar">
       <div className=" position-aside">
@@ -146,7 +146,7 @@ const SideBar = ({ children }) => {
 
                   </li>
                 </a>
-              );
+              )
             })}
         </ul>
         <div className="d-flex align-items-baseline">
@@ -165,7 +165,7 @@ const SideBar = ({ children }) => {
       </div>
       {children}
     </div>
-  );
-};
+  )
+}
 
-export default SideBar;
+export default SideBar

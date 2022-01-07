@@ -1,16 +1,16 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
-import Loader from "../components/Loader";
-import NavigationLibrary from "../components/NavigationLibrary";
+import React from "react"
+import { useSelector } from "react-redux"
+import { useNavigate, Link } from "react-router-dom"
+import Loader from "../components/Loader"
+import NavigationLibrary from "../components/NavigationLibrary"
 
 const Search = () => {
 
   const { latestSearches, latestResultsSearch, loader } = useSelector(
     (state) => state
-  );
+  )
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return loader === false ? (
     <div className="music-container">
@@ -104,7 +104,7 @@ const Search = () => {
     </div>
   ) : (
     <Loader />
-  );
+  )
 }
 
-export default Search;
+export default Search

@@ -1,20 +1,18 @@
-import React, { useEffect } from "react";
-import AlbumCard from "../components/AlbumCard";
-import NavigationLibrary from "../components/NavigationLibrary";
-import PlaceHolder from "../components/PlaceHolder";
-
-import Album from "../svg/Album.svg";
-
-import { useSelector, useDispatch } from "react-redux";
-import { getLikedAlbums } from "../redux/actions";
+import React, { useEffect } from "react"
+import AlbumCard from "../components/AlbumCard"
+import NavigationLibrary from "../components/NavigationLibrary"
+import PlaceHolder from "../components/PlaceHolder"
+import Album from "../svg/Album.svg"
+import { useSelector, useDispatch } from "react-redux"
+import { getLikedAlbums } from "../redux/actions"
 
 function LibraryAlbums() {
-  const { likedAlbums } = useSelector((state) => state);
-  const dispatch = useDispatch();
+  const { likedAlbums } = useSelector((state) => state)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getLikedAlbums());
-  }, []);
+    dispatch(getLikedAlbums())
+  }, [])
 
   return (
     <div className="music-container">
@@ -35,7 +33,7 @@ function LibraryAlbums() {
                     </div>
                     <div className="row py-1">
                       {likedAlbums.map((song) => {
-                        return <AlbumCard song={song} />;
+                        return <AlbumCard song={song} />
                       })}
                     </div>
                   </div>
@@ -56,7 +54,7 @@ function LibraryAlbums() {
         </div>
       </section>
     </div>
-  );
+  )
 }
 
-export default LibraryAlbums;
+export default LibraryAlbums

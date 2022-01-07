@@ -1,25 +1,25 @@
-import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from "react"
+import { useNavigate } from "react-router-dom"
 
 function AlbumTopInfo({ albumInfo, artistInfo, length }) {
   
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const fancyTimeFormat = (duration) => {
     // Hours, minutes and seconds
-    let hrs = ~~(duration / 3600);
-    let mins = ~~((duration % 3600) / 60);
-    let secs = ~~duration % 60;
+    let hrs = ~~(duration / 3600)
+    let mins = ~~((duration % 3600) / 60)
+    let secs = ~~duration % 60
 
     // Output like "1:01" or "4:03:59" or "123:03:59"
-    let ret = "";
+    let ret = ""
 
     if (hrs > 0) {
-      ret += "" + hrs + " hr " + (mins < 10 ? "0" : "");
+      ret += "" + hrs + " hr " + (mins < 10 ? "0" : "")
     }
 
     ret += mins + " " + "min"
-    return ret;
+    return ret
   }
 
   return (
@@ -70,7 +70,7 @@ function AlbumTopInfo({ albumInfo, artistInfo, length }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default AlbumTopInfo;
+export default AlbumTopInfo

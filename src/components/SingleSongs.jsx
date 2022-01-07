@@ -126,21 +126,15 @@ function SingleSongs({ song, index, img, album }) {
         <div className="d-flex ml-auto">
           <div className="d-flex flex-row">
             {liked ? (
-              <i
-                class="bi bi-heart-fill liked mr-5"
-                onClick={() => {
+              <i  class="bi bi-heart-fill liked mr-5"
+                  onClick={() => {
                   fetchLikes(song, "DELETE", song.id)
-                  setLiked(false)
-                }}
-              ></i>
+                  setLiked(false)}}></i>
             ) : (
-              <i
-                class="bi bi-heart unliked mr-5"
-                onClick={() => {
+              <i  class="bi bi-heart unliked mr-5"
+                  onClick={() => {
                   fetchLikes(song)
-                  setLiked(true)
-                }}
-              ></i>
+                  setLiked(true)}}></i>
             )}
 
             <p className="views">{fancyTimeFormat(song.duration)}</p>

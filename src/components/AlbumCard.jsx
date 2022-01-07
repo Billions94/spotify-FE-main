@@ -1,9 +1,9 @@
-import React from "react";
-import { useNavigate, Link } from "react-router-dom";
+import React from "react"
+import { useNavigate, Link } from "react-router-dom"
 import { Col } from "react-bootstrap"
 
 const AlbumCard = ({ song }) => {
-  const navigation = useNavigate();
+  const navigation = useNavigate()
 
   return (
     <Col xs={12} sm={6} md={4} lg={3} className="Recently-card mb-3 ml-3 p-2 "
@@ -18,7 +18,7 @@ const AlbumCard = ({ song }) => {
       </button>
     </div>
   </Col>
-  );
+  )
 }
 
-export default AlbumCard;
+export default AlbumCard

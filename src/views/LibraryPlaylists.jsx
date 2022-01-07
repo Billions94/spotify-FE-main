@@ -1,7 +1,7 @@
-import React from "react";
-import NavigationLibrary from "../components/NavigationLibrary";
-import Playlist from "../svg/Playlist.svg";
-import PlaceHolder from "../components/PlaceHolder";
+import React from "react"
+import NavigationLibrary from "../components/NavigationLibrary"
+import Playlist from "../svg/Playlist.svg"
+import PlaceHolder from "../components/PlaceHolder"
 
 const LibraryPlaylist = () => {
   return (
@@ -59,7 +59,7 @@ const LibraryPlaylist = () => {
         </div>
       </section>
     </div>
-  );
+  )
 }
 
-export default LibraryPlaylist;
+export default LibraryPlaylist

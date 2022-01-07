@@ -1,16 +1,16 @@
-import React, {useState} from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { Dropdown } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { fetchResultsArray } from "../redux/actions/index";
+import React, {useState} from "react"
+import { useLocation, useNavigate } from "react-router-dom"
+import { Dropdown } from "react-bootstrap"
+import { useDispatch } from "react-redux"
+import { fetchResultsArray } from "../redux/actions/index"
 
 const NavigationLibrary = () => {
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("")
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { pathname } = useLocation();
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { pathname } = useLocation()
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-svideo-dark"
         style={{ justifyContent: "normal" }}>
@@ -122,7 +122,7 @@ const NavigationLibrary = () => {
         </Dropdown.Menu>
       </Dropdown>
     </nav>
-  );
-};
+  )
+}
 
-export default NavigationLibrary;
+export default NavigationLibrary

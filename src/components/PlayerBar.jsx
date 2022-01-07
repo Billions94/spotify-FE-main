@@ -1,12 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react"
 import { useSelector, useDispatch } from 'react-redux'
 
 
 const PlayerBar = () => {
 
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const [volume, setVolume] = useState(0.5);
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const [volume, setVolume] = useState(0.5)
   const songInformation = useSelector(state=> state.songInformation)
   const songImage = useSelector(state=> state.songImage)
   const songPlaying = useSelector(state=> state.songPlaying)
@@ -14,28 +14,28 @@ const PlayerBar = () => {
 
 
   const handleCurrentTimeChange = (e) => {
-    const { currentTime, duration } = refs.current;
-    const progress = (currentTime / duration) * 100;
+    const { currentTime, duration } = refs.current
+    const progress = (currentTime / duration) * 100
    
-      setProgress(progress);
+      setProgress(progress)
     
   }
 
   const handleVolumeChange = (e) => {
-    const newVolume = e; 
+    const newVolume = e 
     console.log(newVolume)
-    refs.current.volume = newVolume/100;
-    setVolume(newVolume);
+    refs.current.volume = newVolume/100
+    setVolume(newVolume)
   }
   
 
   useEffect(() => {
     if (songPlaying) {
-      refs.current.play();
-      setIsPlaying(true);
+      refs.current.play()
+      setIsPlaying(true)
     } else {
-      refs.current.pause();
-      setIsPlaying(false);
+      refs.current.pause()
+      setIsPlaying(false)
     }
   } , [songPlaying])
  
@@ -99,8 +99,8 @@ const PlayerBar = () => {
               defaultValue={0}
               value={progress}
               onChange={(e) => {
-                setProgress(e.target.value);
-                refs.current.currentTime = (e.target.value / 100) * refs.current.duration;
+                setProgress(e.target.value)
+                refs.current.currentTime = (e.target.value / 100) * refs.current.duration
               }}
               className="slider1"
               id="myRange"
@@ -153,7 +153,7 @@ const PlayerBar = () => {
         src={songInformation?.preview}
       />
  </div> 
-  );
-};
+  )
+}
 
-export default PlayerBar;
+export default PlayerBar
