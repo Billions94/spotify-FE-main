@@ -2,12 +2,12 @@ import React from "react"
 import AlbumTopInfo from "../components/AlbumTopInfo"
 import Songs from "../components/Songs"
 import { useState, useEffect } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams } from "react-router-dom"
 import Loader from "../components/Loader"
 import { useDispatch, useSelector } from "react-redux"
 import { getLikedAlbums } from "../redux/actions/index"
-import SingleSongs from "../components/SingleSongs"
 import NavigationLibrary from "../components/NavigationLibrary"
+import { playSong } from "../redux/actions"
 
 
 function Album() {
@@ -18,6 +18,7 @@ function Album() {
   const [artistInfo, setArtistInfo] = useState({})
   const [albumInfo, setAlbumInfo] = useState(null)
   const [liked, setLiked] = useState(false)
+  const [playing, setPlaying] = useState(false)
 
   const fetchAlbumSongs = async () => {
     try {
@@ -69,6 +70,19 @@ function Album() {
     setLiked(false)
   }
 
+  function togglePlay() {
+    playing === false ? play() : pause()
+    };
+
+  const play = () => {
+    dispatch(playSong(true))
+    setPlaying(true)
+  }
+  const pause = () => {
+    dispatch(playSong(false))
+    setPlaying(false)
+  }
+
   return albumInfo ? (
     <div className="music-container">
       <div className="w-100">
@@ -96,12 +110,21 @@ function Album() {
               {albumSongs.length > 0 && (
                 <div className="sticky-top">
                   {/*-----------button with js---------*/}
-                  <button id="btn-b4-follow"
+                  {playing === false ? 
+                    <button id="btn-b4-follow"
+                      type="button"
+                      className="btn btn-success"
+                      onClick={()=> togglePlay()}>
+                      <div className="button"/>
+                    </button>
+                    :
+                    <button id="btn-b4-follow"
                     type="button"
                     className="btn btn-success"
-                    onclick="togglePlay()">
-                    <div className="follow button" />
-                  </button>
+                    onClick={()=> togglePlay()}>
+                    <div className="button-paused"/>
+                    </button>
+                  }
                 </div>
               )}
               </div>
@@ -196,7 +219,7 @@ function Album() {
             {/*-------------------------------------------table 1-------------------------------------------*/}
               <>
               { albumSongs.map((song, i) => (
-                  <SingleSongs
+                  <Songs
                   index={i}
                   song={song}
                   img={
