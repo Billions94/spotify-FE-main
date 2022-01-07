@@ -195,17 +195,7 @@ function Album() {
                   <span className="text-light">TITLE</span>
                 </div>
               </div>
-              <div className="d-flex album ml-4">
-                <div className="d-flex">
-                  <span className="text-light">ALBUM</span>
-                </div>
-              </div>
-              <div className="d-flex date-added">
-                <div className="d-flex">
-                  <span className="text-light">DATE ADDED</span>
-                </div>
-              </div>
-              <div className="d-flex duration">
+              <div className="d-flex duration ml-auto">
                 <div className="d-flex">
                   <img
                     src="../images/icons8-clock-32.png"
