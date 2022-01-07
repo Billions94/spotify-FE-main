@@ -413,11 +413,9 @@ li {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: #1db954;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 28px;
   cursor: pointer;
   transition: all 0.02s ease-in-out;
 }
@@ -569,6 +567,7 @@ li {
 
 .see-more:hover {
   opacity: 1;
+  cursor: pointer;
 }
 
 .artist-pick {

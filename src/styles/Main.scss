@@ -381,6 +381,10 @@ span {
     font-size: 11px;
 }
 
+.button {
+    margin-left: 12px !important;
+}
+
 .musics-follow-btn {
     background-color: transparent;
     border: 1px solid rgb(155, 154, 154);
@@ -513,11 +517,10 @@ thead {
 }
 
 #btn-b4-follow {
-    width: 50px;
-    height: 50px;
-    border-radius: 30px;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
     font-weight: bold;
-    margin-left: 3px;
 }
 
 
@@ -873,11 +876,19 @@ span {
     margin-left: 9px;
 }
 
+@font-face {
+    font-family: circularLight;
+    src: url(./fonts/CircularStd-Light.otf);
+}
+
 #a2 {
     // color: grey;
     margin-left: 10px;
     font-size: 14px;
-    line-height: 1;
+    font-weight: 700;
+    font-family: circularLight !important;
+    font-style: normal;
+    line-height: 16px;
     position: relative;
     cursor: pointer;
     text-decoration: underline;
@@ -941,7 +952,10 @@ span {
 
 .button-paused {
     border-style: double;
-    border-width: 0px 0 0px 15px;
+    border-width: 0px 0 15px 0px;
+    transform: rotate(90deg);
+    width: 16px;
+    margin-left: 0.7rem;
 }
 
 .button:hover {

@@ -2,12 +2,12 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
-
 import {
   getSongInformation,
   getSongImage,
   playSong,
 } from "../redux/actions/index.js"
+
 
 function SingleSongs({ song, index, img, album }) {
 
@@ -77,23 +77,22 @@ function SingleSongs({ song, index, img, album }) {
     } 
   }, [favoriteSongs])
 
-  const handlePlay = ()=> {
-    if(playing === false){
-      setPlaying(true)
-      dispatch(getSongImage(img))
-      dispatch(playSong(true))
-      dispatch(getSongInformation(song))
-    }
-  }
+  
+  function togglePlay() {
+    playing === false ? play() : pause()
+    };
 
-  const handlePause = ()=> {
-    if(playing === true){
-      setPlaying(false)
-      dispatch(playSong(false))
-    }
+  const play = () => {
+    setPlaying(true)
+    dispatch(getSongImage(img))
+    dispatch(playSong(true))
+    dispatch(getSongInformation(song))
   }
-
-  console.log('-----------------------> song', song)
+  const pause = () => {
+    dispatch(playSong(false))
+    setPlaying(false)
+  }
+ 
 
 
   return (
@@ -106,11 +105,10 @@ function SingleSongs({ song, index, img, album }) {
             { 
               isShown === false ? <span className="length-song">{index + 1}</span> 
               : playing === false ? <img  onClick={() => {
-                handlePlay()}}
-                onDoubleClick={()=> dispatch(playSong(false))}
+                togglePlay()}}
                src={'../images/playbtn.png'} width='17px' height='20px'/>
               :  
-              <img onDoubleClick={()=> handlePause()}
+              <img onClick={()=> togglePlay()}
                 src="https://img.icons8.com/ios-filled/50/ffffff/pause--v1.png" width='17px' height='20px'/>
             }  
           </div>
@@ -156,7 +154,7 @@ function SingleSongs({ song, index, img, album }) {
                   setLiked(true)}}></i>
             )}
 
-            <p className="views">{fancyTimeFormat(song.duration)}</p>
+            <p className="views ">{fancyTimeFormat(song.duration)}</p>
           </div>
         </div>
       </div>

@@ -4,15 +4,19 @@ import Loader from "../components/Loader"
 import Songs from "../components/Songs"
 import AlbumCard from "../components/AlbumCard"
 import SingleSongs from "../components/SingleSongs"
+import { playSong } from "../redux/actions"
+import { useDispatch } from "react-redux"
 
 const Artist = () => {
   const [artistInfo, setArtistInfo] = useState(null)
   const [artistTopTracks, setArtistTopTracks] = useState([])
   const [artistTopFiveAlbums, setArtistTopFiveAlbums] = useState([])
   const [seeMore, setSeeMore] = useState(false)
+  const [playing, setPlaying] = useState(false)
 
 
   const params = useParams()
+  const dispatch = useDispatch()
 
   const fetchArtistInfo = async (params) => {
     try {
@@ -68,6 +72,20 @@ const Artist = () => {
     topFiveAlbums(artistInfo?.name)
   }, [artistInfo])
 
+  function togglePlay() {
+    playing === false ? play() : pause()
+    };
+
+  const play = () => {
+    dispatch(playSong(true))
+    setPlaying(true)
+  }
+  const pause = () => {
+    dispatch(playSong(false))
+    setPlaying(false)
+  }
+ 
+
   return artistInfo ? (
     <div className="music-container">
       <section
@@ -75,9 +93,7 @@ const Artist = () => {
         style={{
           backgroundImage: `url(${artistInfo.picture_xl})`,
           backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-      >
+          backgroundRepeat: "no-repeat"}}>
         <div className="container-fluid">
           <nav className="navbar navbar-expand-lg navbar-dark bg-svideo-dark">
             <button
@@ -131,9 +147,29 @@ const Artist = () => {
         <div className="main-content-album">
           <div>
             <div className="buttons-row">
-              <div className="play-button">
+              {/* <div className="play-button">
                 <div className="play">
                   <i className="bi bi-play-fill" />
+                </div>
+              </div> */}
+              <div className="padding-content">
+                <div className="sticky-top play-button">
+                  {/*-----------button with js---------*/}
+                  {playing === false ? 
+                    <button id="btn-b4-follow"
+                      type="button"
+                      className="btn btn-success"
+                      onClick={()=> togglePlay()}>
+                      <div className="button"/>
+                    </button>
+                    :
+                    <button id="btn-b4-follow"
+                    type="button"
+                    className="btn btn-success"
+                    onClick={()=> togglePlay()}>
+                    <div className="button-paused"/>
+                    </button>
+                  }
                 </div>
               </div>
               <button id="follow-button">FOLLOWING</button>
@@ -171,7 +207,7 @@ const Artist = () => {
                 <div className="col-12 col-md-12 col-lg-12 col-xl-12">
                   {artistTopTracks?.slice(0, 5).map((song, index) => {
                     return (
-                      <SingleSongs
+                      <Songs
                         song={song}
                         index={index}
                         album={"A"}
@@ -181,7 +217,7 @@ const Artist = () => {
                   })}
                   { seeMore === false ? null
                     : artistTopTracks?.slice(5, 10).map((song, index) => (
-                        <SingleSongs
+                        <Songs
                           song={song}
                           index={index + 5}
                           album={"A"}
