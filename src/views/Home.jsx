@@ -11,6 +11,7 @@ const Home = () => {
 
   const [songs, setSongs] = useState([])
   const [recentSongs, setRecentSongs] = useState([])
+  const [seeAll, setSeeAll] = useState(false)
 
   const getSongs = (artist) => {
     fetch(`https://striveschool-api.herokuapp.com/api/deezer/search?q=${artist}`)
@@ -110,12 +111,37 @@ const Home = () => {
                   <div class="d-flex justify-content-between mt-5">
                     <h4 style={{ width: "bold" }}>Recently played</h4>
                     <p>
-                      <span class="text-muted"> SEE All</span>
+                      { seeAll === false ? <span onClick={()=> setSeeAll(true)}
+                      class="text-muted seeAll"> SEE All</span>
+                      : <span onClick={()=> setSeeAll(false)}
+                      class="text-muted seeAll"> SEE LESS</span>
+                      }
                     </p>
                   </div>
                   <div class="row py-1 d-flex" id="recently-played">
-                    { recentSongs.slice(0, 12).map((song, index) => (
-                      <div className="Recently-card col-lg-2 mb-3 ml-3 p-2 ">
+                    { recentSongs.slice(0, 6).map((song, index) => (
+                      <div key={index} className="Recently-card col-lg-2 mb-3 ml-3 p-2 ">
+                          <Link to={`/album/${song.album.id}`}>
+                            <img src={song.album.cover_medium} className="card-img-top" />
+                          </Link>
+                        <div className="card-body mt-2">
+                            <Link to={`/album/${song.album.id}`}>
+                              <h6 className="card-title text-white">{song.album.title}</h6>
+                            </Link>
+                            <Link to={`/artist/${song.artist.id}`}
+                              className="card-text1">
+                              <span className="card-text1 text-white">{song.artist.name}</span>
+                            </Link>
+                            <button id="btn-with-style1" type="button"
+                              className="btn btn-success">
+                              ▶
+                            </button>
+                        </div>
+                      </div>
+                      ))}
+                      {seeAll === false ? null 
+                      : recentSongs.slice(6, 25).map((song, index) => (
+                      <div key={index} className="Recently-card col-lg-2 mb-3 ml-3 p-2 ">
                           <Link to={`/album/${song.album.id}`}>
                             <img src={song.album.cover_medium} className="card-img-top" />
                           </Link>

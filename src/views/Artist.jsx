@@ -181,8 +181,7 @@ const Artist = () => {
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-                style={{ color: "white" }}
-              >
+                style={{ color: "white" }}>
                 <i className="bi bi-three-dots tr-dots" />
               </a>
               <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -227,9 +226,14 @@ const Artist = () => {
                 </div>
               </div>
               <a href>
-                <h1 onClick={()=> setSeeMore(true)} className="see-more" style={{ marginBottom: 20 }}>
+                { seeMore === false ? 
+                  <h1 onClick={()=> setSeeMore(true)} className="see-more" style={{ marginBottom: 20 }}>
                   SEE MORE
                 </h1>
+                :
+                <h1 onClick={()=> setSeeMore(false)} className="see-more" style={{ marginBottom: 20 }}>
+                SEE LESS
+              </h1>}
               </a>
 
               <h1 className="text-left title-section d-none d-md-none d-lg-none d-xl-block"

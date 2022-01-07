@@ -1043,12 +1043,17 @@ a #alex:hover {
     margin-left: 17px;
 }
 
+.seeAll {
+    cursor: pointer;
+}
+
 .table-header {
     display: flex;
     flex-direction: row;
     align-items: center;
     border-bottom: 1px solid grey;
-    background-color: transparent
+    background-color: transparent;
+    margin: 10px;
 }
 
 .table-body {
