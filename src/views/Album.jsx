@@ -246,7 +246,7 @@ function Album() {
               <div className="d-flex duration">
                 <div className="d-flex">
                   <img
-                    src="./images/icons8-clock-32.png"
+                    src="../images/icons8-clock-32.png"
                     width={20}
                     height={20}
                     alt

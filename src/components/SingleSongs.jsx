@@ -11,7 +11,7 @@ import {
 
 function SingleSongs({ song, index, img, album }) {
 
-  const {favoriteSongs} = useSelector(state => state)
+  const { favoriteSongs } = useSelector(state => state)
   const [liked, setLiked] = useState(false)
   const [isShown, setIsShown] = useState(false)
   const [playing, setPlaying] = useState(false)
@@ -92,6 +92,8 @@ function SingleSongs({ song, index, img, album }) {
       dispatch(playSong(false))
     }
   }
+
+  console.log('-----------------------> song', song)
 
 
   return (

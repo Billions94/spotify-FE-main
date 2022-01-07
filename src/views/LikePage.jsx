@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router"
 import NavigationLibrary from "../components/NavigationLibrary"
 import SingleSongs from "../components/SingleSongs"
+import Album from "../svg/Album.svg"
+import PlaceHolder from "../components/PlaceHolder"
 
 const LikePage = () => {
   const params = useParams()
@@ -16,7 +18,7 @@ const LikePage = () => {
     try {
       const response = await fetch("https://spotify-be-app.herokuapp.com/likes")
         if(response.ok) {
-          const data = response.json()
+          const data = await response.json()
           setLikedSongs(data)
         }
     } catch (error) {
@@ -24,21 +26,6 @@ const LikePage = () => {
     }
   }
   
-  // const fetchPlaylistSongs = (playlistId) => {
-  //   const url = `https://spotify-be-app.herokuapp.com/playlist/${playlistId}`;
-  //   fetch(url)
-  //     .then((response) => response.json())
-  //     .then((data) => {
-      
-  //       setLikedSongs(data.songs);
-  //       setName(data.name);
-  //       if (data.songs[0]) {
-  //         setImage(data.songs[0].md5_image);
-  //       } else {
-  //         setImage(null);
-  //       }
-  //     });
-  // };
 
   const fetchPlaylistSongs = async (playlistId) => {
     try {
@@ -65,6 +52,9 @@ const LikePage = () => {
       fetchLikedSongs()
     }
   }, [params.playlistId])
+
+
+  console.log('-----------------------> song', likedSongs)
   return (
     <div className="like-container">
       <section id="navbar">
@@ -161,7 +151,15 @@ const LikePage = () => {
                   />
                 ))}
                 </>
-
+                {likedSongs.length === 0 && (
+                  <PlaceHolder
+                    svg={Album}
+                    title={"Follow your first album"}
+                    height={"80vh"}
+                    description={"Save albums by tapping the heart icon."}
+                    button={"FIND ALBUMS"}
+                  />
+                )}
                 </div>
               </div>
             </div>

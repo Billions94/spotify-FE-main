@@ -117,8 +117,7 @@ const SideBar = ({ children }) => {
                 ? `d-flex align-items-center justify-content-start section-selected-style-active`
                 : "d-flex align-items-center justify-content-start section-selected-style"
             }
-            onClick={() => navigate("/liked")}
-          >
+            onClick={() => navigate("/liked")}>
             <i className="bi bi-heart-fill icons-color-size" />
             <p className="section-side">Liked Songs</p>
           </div>

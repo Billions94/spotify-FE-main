@@ -2,8 +2,13 @@ import React from "react"
 import NavigationLibrary from "../components/NavigationLibrary"
 import Playlist from "../svg/Playlist.svg"
 import PlaceHolder from "../components/PlaceHolder"
+import { useSelector } from "react-redux"
 
 const LibraryPlaylist = () => {
+
+  const { favoriteSongs } = useSelector(state => state)
+  console.log(favoriteSongs)
+
   return (
     <div className="music-container">
       <section id="navbar">
@@ -31,7 +36,7 @@ const LibraryPlaylist = () => {
                           <h1 id="likedh1" className="text-left pt-3 ">
                             <strong>Liked Songs</strong>
                           </h1>
-                          <h6 className="text-left">1200 liked songs</h6>
+                          <h6 className="text-left">{favoriteSongs.length} liked songs</h6>
                         </div>
                         <button
                           id="btn-with-style"
