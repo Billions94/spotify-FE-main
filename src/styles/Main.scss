@@ -520,10 +520,6 @@ thead {
     margin-left: 3px;
 }
 
-.card {
-    background-color: black;
-    padding: 0;
-}
 
 .card-body {
     padding: 0%;
@@ -641,6 +637,10 @@ h5.card-title {
 }
 
 .Recently-card:hover #btn-with-style1 {
+    opacity: 1;
+}
+
+.Recently-card:hover #btn-with-style2 {
     opacity: 1;
 }
 

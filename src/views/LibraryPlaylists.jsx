@@ -28,7 +28,7 @@ const LibraryPlaylist = () => {
                       style={{ width: "30rem", height: "20rem" }}>
                       <div className="card-body pl-4 liked-song d-flex">
                         <p className="card-text text-left pt-6">
-                         {favoriteSongs[0].album.title}
+                         { favoriteSongs.map(s => s.album?.title)}
                         </p>
                         <div>
                           <h1 id="likedh1" className="text-left pt-3 ">
