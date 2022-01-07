@@ -5,6 +5,8 @@ import NavigationLibrary from "../components/NavigationLibrary"
 import SingleSongs from "../components/SingleSongs"
 import Album from "../svg/Album.svg"
 import PlaceHolder from "../components/PlaceHolder"
+import { useDispatch } from "react-redux"
+import { playSong } from "../redux/actions"
 
 const LikePage = () => {
   const params = useParams()
@@ -12,6 +14,9 @@ const LikePage = () => {
   const [likedSongs, setLikedSongs] = useState([])
   const [image, setImage] = useState(null)
   const [name, setName] = useState(null)
+  const [playing, setPlaying] = useState(false)
+
+  const dispatch = useDispatch()
   
 
   const fetchLikedSongs = async () => {
@@ -53,8 +58,20 @@ const LikePage = () => {
     }
   }, [params.playlistId])
 
+  function togglePlay() {
+    playing === false ? play() : pause()
+    };
 
-  console.log('-----------------------> song', likedSongs)
+  const play = () => {
+    dispatch(playSong(true))
+    setPlaying(true)
+  }
+  const pause = () => {
+    dispatch(playSong(false))
+    setPlaying(false)
+  }
+
+
   return (
     <div className="like-container">
       <section id="navbar">
@@ -96,12 +113,21 @@ const LikePage = () => {
                 <div className="buttons-row">
                 <div className="sticky-top">
                   {/*-----------button with js---------*/}
-                  <button id="btn-b4-follow"
+                  {playing === false ? 
+                    <button id="btn-b4-follow"
+                      type="button"
+                      className="btn btn-success"
+                      onClick={()=> togglePlay()}>
+                      <div className="button"/>
+                    </button>
+                    :
+                    <button id="btn-b4-follow"
                     type="button"
                     className="btn btn-success"
-                    onclick="togglePlay()">
-                    <div className="follow button" />
-                  </button>
+                    onClick={()=> togglePlay()}>
+                    <div className="button-paused"/>
+                    </button>
+                  }
                 </div>
                 </div>
               )}

@@ -3,7 +3,6 @@ import { useParams } from "react-router"
 import Loader from "../components/Loader"
 import Songs from "../components/Songs"
 import AlbumCard from "../components/AlbumCard"
-import SingleSongs from "../components/SingleSongs"
 import { playSong } from "../redux/actions"
 import { useDispatch } from "react-redux"
 
@@ -62,7 +61,6 @@ const Artist = () => {
     }
   }
 
-  console.log('--------------------------> artist info', artistInfo)
 
   useEffect(() => {
     fetchArtistInfo(params.artistId)
@@ -147,11 +145,6 @@ const Artist = () => {
         <div className="main-content-album">
           <div>
             <div className="buttons-row">
-              {/* <div className="play-button">
-                <div className="play">
-                  <i className="bi bi-play-fill" />
-                </div>
-              </div> */}
               <div className="padding-content">
                 <div className="sticky-top play-button">
                   {/*-----------button with js---------*/}
