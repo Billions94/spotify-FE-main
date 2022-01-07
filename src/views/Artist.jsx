@@ -7,10 +7,10 @@ import SingleSongs from "../components/SingleSongs"
 
 const Artist = () => {
   const [artistInfo, setArtistInfo] = useState(null)
-
   const [artistTopTracks, setArtistTopTracks] = useState([])
-
   const [artistTopFiveAlbums, setArtistTopFiveAlbums] = useState([])
+  const [seeMore, setSeeMore] = useState(false)
+
 
   const params = useParams()
 
@@ -179,10 +179,19 @@ const Artist = () => {
                       />
                     )
                   })}
+                  { seeMore === false ? null
+                    : artistTopTracks?.slice(5, 10).map((song, index) => (
+                        <SingleSongs
+                          song={song}
+                          index={index + 5}
+                          album={"A"}
+                          img={`https://e-cdns-images.dzcdn.net/images/cover/${song.md5_image}/264x264-000000-80-0-0.jpg`}
+                        />
+                      ))}
                 </div>
               </div>
               <a href>
-                <h1 className="see-more" style={{ marginBottom: 20 }}>
+                <h1 onClick={()=> setSeeMore(true)} className="see-more" style={{ marginBottom: 20 }}>
                   SEE MORE
                 </h1>
               </a>
