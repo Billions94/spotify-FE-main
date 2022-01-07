@@ -7,6 +7,7 @@ import Loader from "../components/Loader"
 import { useDispatch, useSelector } from "react-redux"
 import { getLikedAlbums } from "../redux/actions/index"
 import SingleSongs from "../components/SingleSongs"
+import NavigationLibrary from "../components/NavigationLibrary"
 
 
 function Album() {
@@ -72,44 +73,7 @@ function Album() {
     <div className="music-container">
       <div className="w-100">
         <div className="container-fluid p-0">
-          <nav id="jumbo-navbar"
-            className="navbar navbar-expand-lg navbar-dark">
-            <button className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon" />
-            </button>
-            <div className="collapse navbar-collapse"
-              id="navbarSupportedContent">
-              <ul className="navbar-nav mr-auto" />
-              <div>
-                <div className="dropdown d-inline-block">
-                  <a
-                    className="btn nav-btn dropdown-toggle"
-                    href="#"
-                    role="button"
-                    id="dropdownMenuLink"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                    style={{ color: "white" }}>
-                    <img
-                      src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg"
-                      width={28}
-                      height={28}
-                      className="mr-1"
-                      style={{ borderRadius: "50%" }}/>
-                    <span className="d-inline-block">Alexander</span>
-                  </a>
-
-                </div>
-              </div>
-            </div>
-          </nav>
+          <NavigationLibrary />
         </div>
       </div>
       <section id="navbar">
@@ -176,15 +140,13 @@ function Album() {
                 src="https://img.icons8.com/material-rounded/50/26e07f/like--v1.png"
                 width={40} height={40}/>
                 }
-              <a
-                className="btn nav-btn"
+              <a className="btn nav-btn"
                 role="button"
                 id="dropdownMenuLink"
                 data-toggle="dropdown"
                 aria-haspopup="true"
                 aria-expanded="false"
-                style={{ color: "white" }}
-              >
+                style={{ color: "white" }}>
                 <i className="bi bi-three-dots tr-dots" />
               </a>
               <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -200,31 +162,8 @@ function Album() {
               </div>
             </div>
           </div>
-          {/* <div className="padding-content">
-            <div className="row d-flex">
-              <div className="col-12 col-md-12 col-lg-12 col-xl-12">
-                <div className="col-12 d-flex flex-column mb-0">
-                  <div className="d-flex justify-content-between header-album">
-                    <span className="text-muted"># TITLE</span>
 
-                    <i class="bi bi-clock text-muted"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <hr className="header-album" />
-          </div>
-          {albumSongs.map((song, index) => {
-            return (
-              <Songs
-                song={song}
-                index={index}
-                album={albumInfo}
-                img={albumInfo.cover_small}
-              />
-            )
-          })} */}
-                    <div className="col-12">
+          <div className="col-12">
           <div className="song-content">
             <div className="table-header stickydiv mb-4 sticky-top">
               <div className="d-flex text-light hash">#</div>
