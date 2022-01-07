@@ -28,9 +28,7 @@ const LibraryPlaylist = () => {
                       style={{ width: "30rem", height: "20rem" }}>
                       <div className="card-body pl-4 liked-song d-flex">
                         <p className="card-text text-left pt-6">
-                          WizKid True Love (feat. Tay Iwar & Projexx)•Lou Bega
-                          Mambo No. 5 (a Little Bit of...)•Leona Lewis I See You
-                          (Theme from Avatar)•Kanye West Hurricane.Kanye West...
+                         {favoriteSongs[0].album.title}
                         </p>
                         <div>
                           <h1 id="likedh1" className="text-left pt-3 ">
