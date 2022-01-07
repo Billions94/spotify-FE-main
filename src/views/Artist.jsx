@@ -111,20 +111,6 @@ const Artist = () => {
                       style={{ borderRadius: "50%" }}/>
                     <span className="d-inline-block">Diego 'Ziba' Balack</span>
                   </a>
-                  {/* <div
-                    className="dropdown-menu"
-                    aria-labelledby="dropdownMenuLink"
-                  >
-                    <a className="dropdown-item" href="#">
-                      Action
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Another action
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      Something else here
-                    </a>
-                  </div> */}
                 </div>
               </div>
             </div>
@@ -180,16 +166,10 @@ const Artist = () => {
                 <h1 className="title-section" style={{ width: 1035 }}>
                   Popular
                 </h1>
-                <h1
-                  className="title-section d-none d-md-none d-lg-none d-xl-block"
-                  style={{ width: 487 }}
-                >
-                  Artist Pick
-                </h1>
               </div>
               <div className="row d-flex">
-                <div className="col-12 col-md-12 col-lg-12 col-xl-7">
-                  {artistTopTracks?.map((song, index) => {
+                <div className="col-12 col-md-12 col-lg-12 col-xl-12">
+                  {artistTopTracks?.slice(0, 5).map((song, index) => {
                     return (
                       <SingleSongs
                         song={song}
@@ -200,7 +180,18 @@ const Artist = () => {
                     )
                   })}
                 </div>
-                <div className="d-none d-md-none d-lg-none d-xl-block offset-1 col-4 ">
+              </div>
+              <a href>
+                <h1 className="see-more" style={{ marginBottom: 20 }}>
+                  SEE MORE
+                </h1>
+              </a>
+
+              <h1 className="text-left title-section d-none d-md-none d-lg-none d-xl-block"
+                  style={{ width: 487 }}>
+                  Artist Pick
+                </h1>
+              <div className="d-none d-md-none d-lg-none d-xl-block  col-4 ">
                   <div className="d-flex">
                     <div>
                       <img
@@ -214,12 +205,7 @@ const Artist = () => {
                           className="artist-small-pic"
                           src={artistInfo.picture_small}
                         />
-                        <span className="artist-name">Posted by an Artist</span>
-                      </div>
-                      <div>
-                        <a className="name-tag" href="#">
-                          {artistInfo.name}
-                        </a>
+                        <span className="artist-name ml-2">Posted by {artistInfo.name}</span>
                       </div>
                       <div style={{
                           fontSize: 14,
@@ -232,47 +218,9 @@ const Artist = () => {
                     </div>
                   </div>
                 </div>
-              </div>
-              <a href>
-                <h1 className="see-more" style={{ marginBottom: 20 }}>
-                  SEE MORE
-                </h1>
-              </a>
-              <h1
-                className="title-section d-xl-none"
-                style={{ width: 400, paddingLeft: 15 }}
-              >
-                Artist Pick
-              </h1>
-              <div className="col-12 d-xl-none">
-                <div className="d-flex">
-                  <div>
-                    <img
-                      className="artist-pick"
-                      src={artistInfo.picture_medium}
-                    />
-                  </div>
-                  <div className="d-flex flex-column">
-                    <div>
-                      <img
-                        className="artist-small-pic"
-                        src={artistInfo.picture_small}
-                      />
-                      <span className="artist-name">Posted by an Artist</span>
-                    </div>
-                    <div>
-                      <a className="name-tag" href="#">
-                        {artistInfo.name}
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
               <section id="second-section">
-                <div
-                  className="container-fluid p-0"
-                  style={{ marginBottom: 64 }}
-                >
+                <div className="container-fluid p-0"
+                  style={{ marginBottom: 64 }}>
                   <div className="d-flex justify-content-between mt-3">
                     <h4 style={{ width: "bold" }}>Albums</h4>
                   </div>

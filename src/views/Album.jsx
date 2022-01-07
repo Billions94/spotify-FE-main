@@ -6,6 +6,7 @@ import { useParams, useNavigate } from "react-router-dom"
 import Loader from "../components/Loader"
 import { useDispatch, useSelector } from "react-redux"
 import { getLikedAlbums } from "../redux/actions/index"
+import SingleSongs from "../components/SingleSongs"
 
 
 function Album() {
@@ -256,7 +257,7 @@ function Album() {
             {/*-------------------------------------------table 1-------------------------------------------*/}
               <>
               { albumSongs.map((song, i) => (
-                  <Songs
+                  <SingleSongs
                   index={i}
                   song={song}
                   img={

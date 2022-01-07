@@ -14,6 +14,7 @@ function SingleSongs({ song, index, img, album }) {
   const {favoriteSongs} = useSelector(state => state)
   const [liked, setLiked] = useState(false)
   const [isShown, setIsShown] = useState(false)
+  const [playing, setPlaying] = useState(false)
 
   const fetchLikes = (likedSong, method, id) => {
     likedSong.album = album
@@ -68,7 +69,7 @@ function SingleSongs({ song, index, img, album }) {
 
   useEffect(() => { 
     if (favoriteSongs.length > 0) {
-      if(favoriteSongs.find((s => s.id === song.id))){
+      if(favoriteSongs.map(s => s.id).indexOf(song.id) !== -1){
         setLiked(true)
       } else {
         setLiked(false)
@@ -76,27 +77,43 @@ function SingleSongs({ song, index, img, album }) {
     } 
   }, [favoriteSongs])
 
+  const handlePlay = ()=> {
+    if(playing === false){
+      setPlaying(true)
+      dispatch(getSongImage(img))
+      dispatch(playSong(true))
+      dispatch(getSongInformation(song))
+    }
+  }
+
+  const handlePause = ()=> {
+    if(playing === true){
+      setPlaying(false)
+      dispatch(playSong(false))
+    }
+  }
+
 
   return (
     <div className="col-12 d-flex flex-column mb-0 background-list"
-        onClick={() => {
-        dispatch(getSongInformation(song))
-        dispatch(getSongImage(img))
-        dispatch(playSong(false)) }}>
+        onMouseEnter={() => setIsShown(true)} onMouseLeave={() => setIsShown(false)}>
+        
 
       <div className="d-flex">
           <div className="d-flex hash">
             { 
               isShown === false ? <span className="length-song">{index + 1}</span> 
-              : <img onClick={()=> dispatch(playSong(true))}
-               src={'./images/playbtn.png'} width='17px' height='20px'/>
+              : playing === false ? <img  onClick={() => {
+                handlePlay()}}
+                onDoubleClick={()=> dispatch(playSong(false))}
+               src={'../images/playbtn.png'} width='17px' height='20px'/>
+              :  
+              <img onDoubleClick={()=> handlePause()}
+                src="https://img.icons8.com/ios-filled/50/ffffff/pause--v1.png" width='17px' height='20px'/>
             }  
           </div>
 
-          <div className="d-flex align-items-center title"
-              onDoubleClick={() => {
-              dispatch(playSong(true))
-            }}>
+          <div className="d-flex align-items-center title">
             {" "}
             {/*double click auto play*/}
             <div>
