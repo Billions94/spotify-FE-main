@@ -1,12 +1,12 @@
 import React from "react"
 import { useEffect, useState } from "react"
-import Button from 'react-bootstrap/Button'
 import { useLocation, useNavigate } from "react-router-dom"
 
 const SideBar = ({ children }) => {
   const [playlist, setPlaylist] = useState([])
 
   const creatPlaylist = () => {
+
     const newPlaylist = { name: "playlist" }
     const url = "https://spotify-be-app.herokuapp.com/playlist"
     fetch(url, {
@@ -14,7 +14,6 @@ const SideBar = ({ children }) => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     }).then((data) => {
-      // console.log(data)
       fetchPLaylist()
       console.log(playlist.length)
     })
@@ -65,7 +64,7 @@ const SideBar = ({ children }) => {
           <div
             className={
               pathname === "/"
-                ? `d-flex align-items-center justify-content-start section-selected-style section-selected-style-active`
+                ? `d-flex align-items-center justify-content-start section-selected-style-active`
                 : "d-flex align-items-center justify-content-start section-selected-style"
             }
             onClick={() => navigate("/")}
@@ -79,7 +78,7 @@ const SideBar = ({ children }) => {
           <div
             className={
               pathname === "/search"
-                ? `d-flex align-items-center justify-content-start section-selected-style section-selected-style-active`
+                ? `d-flex align-items-center justify-content-start section-selected-style-active`
                 : "d-flex align-items-center justify-content-start section-selected-style"
             }
             onClick={() => navigate("/search")}
@@ -94,7 +93,7 @@ const SideBar = ({ children }) => {
             className={
               pathname === "/library/playlists" ||
               pathname === "/library/albums"
-                ? `d-flex align-items-center justify-content-start section-selected-style section-selected-style-active`
+                ? `d-flex align-items-center justify-content-start section-selected-style-active`
                 : "d-flex align-items-center justify-content-start section-selected-style"
             }
             onClick={() => navigate("/library/playlists")}
@@ -115,7 +114,7 @@ const SideBar = ({ children }) => {
           <div
             className={
               pathname === "/liked"
-                ? `d-flex align-items-center justify-content-start section-selected-style section-selected-style-active`
+                ? `d-flex align-items-center justify-content-start section-selected-style-active`
                 : "d-flex align-items-center justify-content-start section-selected-style"
             }
             onClick={() => navigate("/liked")}

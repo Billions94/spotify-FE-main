@@ -70,12 +70,13 @@ html {
 }
 
 .hr-styled {
-  background: white;
-  margin-left: 30px;
+  background: rgb(51, 51, 51);
+  margin-left: 15px;
+  width: 227px;
 }
 
 .section-side {
-  color: white;
+  color: rgb(173, 173, 173);
   margin-left: 15px;
   margin-top: 20px;
 }
@@ -93,6 +94,10 @@ a:link {
   margin-top: 10px;
   min-width: 230px;
   max-width: 230px;
+}
+
+.section-selected-style-active p {
+  color:white
 }
 
 .section-selected-style {
