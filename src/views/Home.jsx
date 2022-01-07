@@ -42,55 +42,49 @@ const Home = () => {
             <div class="container">
               <h2>Good morning</h2>
               <div class="row py-2" id="good-mor">
-                {songs.slice(0, 6).map((song, index) => (
-                  <div className="col-12 col-sm-6 col-md-4 col-lg-4"
-                    onClick={() => navigate(`/artist/${song.artist.id}`)}>
-                    <div class="card-top p-0 mb-2">
-                      <div class="row no-gutters">
-                        <div class="col-md-4">
-                          <img
-                            src={song.album.cover_medium}
-                            class="img-fluid h-100 w-100"
-                          />
-                        </div>
-                        <div class="
-                                col-md-8
-                                d-flex
-                                justify-content-center
-                                align-items-center
-                              ">
-                          <div class="card-body p-0 pl-1">
-                            <p class="card-text">
-                              <span>{song.album.title}</span>
-                            </p>
+                {
+                  songs.slice(0, 1).map((song, index) => (
+                    <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-4"
+                      onClick={() => navigate("/liked")}>
+                      <div class="card-top p-0 mb-2">
+                        <div class="row no-gutters">
+                          <div class="col-md-4">
+                            <img
+                              src={"https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png"}
+                              class="img-fluid h-100 w-100"
+                            />
+                          </div>
+                          <div class="
+                                  col-md-8
+                                  d-flex
+                                  justify-content-center
+                                  align-items-center
+                                ">
+                            <div class="card-body p-0 pl-1">
+                              <p class="card-text">
+                                <span className="">Liked Songs</span>
+                              </p>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-              <div class="row py-2" id="good-mor">
-                {songs.slice(0, 1).map((song, index) => (
-                  <div className="col-12 col-sm-6 col-md-4 col-lg-4"
-                    onClick={() => navigate("/liked")}>
+                  ))
+                }
+                 {songs.slice(0, 5).map((song, index) => (
+                  <div key={index} className="col-12 col-sm-6 col-md-4 col-lg-4"
+                    onClick={() => navigate(`/artist/${song.artist.id}`)}>
                     <div class="card-top p-0 mb-2">
                       <div class="row no-gutters">
                         <div class="col-md-4">
-                          <img
-                            src={"https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png"}
-                            class="img-fluid h-100 w-100"
-                          />
+                          <img src={song.album.cover_medium}
+                            class="img-fluid h-100 w-100"/>
                         </div>
-                        <div class="
-                                col-md-8
-                                d-flex
-                                justify-content-center
-                                align-items-center
-                              ">
+                        <div class="col-md-8 d-flex ustify-content-center
+                                align-items-center">
                           <div class="card-body p-0 pl-1">
                             <p class="card-text">
-                              <span className="">Liked Songs</span>
+                              <span>{song.album.title}</span>
                             </p>
                           </div>
                         </div>
